@@ -18,21 +18,18 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        final String id = binding.idInput.getText().toString();
-        final String pw = binding.pwInput.getText().toString();
 
-        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+        binding.btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(id == "admin" && pw == "qwer"){
+                String inputId = binding.idEdt.getText().toString();
+                String inputPw = binding.pwEdt.getText().toString();
+                // 안드로이드 SDK 에서의 String 비교는 == 이 아니라 equals()를 사용해서 비교해줘야함.
+                if(inputId.equals("admin") && inputPw.equals("qwer")){
                     Toast.makeText(MainActivity.this, "관리자입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
     }
 }
